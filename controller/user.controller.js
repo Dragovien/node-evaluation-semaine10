@@ -10,7 +10,7 @@ const onError = (res) => {
 
 
 export const home = (req,res) => {
-    res.render('user/home', {title: 'Home'})
+    res.render('user/register', {title: 'Register'})
     return
 }
 
