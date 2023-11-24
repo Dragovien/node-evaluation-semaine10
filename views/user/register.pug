@@ -2,3 +2,18 @@ extends ../layout/layout
 
 block content
     h1#title Register
+    div container-register
+       form(
+        id="registration-form"
+        action=""
+        method="POST"
+        )
+            label#firstname(for="firstname") firstname:
+            input#firstname-input(type="text" name="firstname")
+            label#lastname(for="lastname") lastname:
+            input#lastname-input(type="text" name="lastname") 
+            label#email(for="email") email:
+            input#email-input(type="text" name="email") 
+            label#password(for="password") password:
+            input#password-input(type="text" name="password")
+            input#btn-post(type="submit" value="send")      
