@@ -27,10 +27,16 @@ export const dashboard = (req,res) => {
 
 export const register = (req,res) => {
     const {method} = req
+
+    
     
     if(method === 'POST') {
-        const {firstname, lastname, email, password} = req.body
-        console.log(firstname)
+        
+        
+        console.log('test')
+
+
+
         return
     }
 }

@@ -1,4 +1,4 @@
-export const logMiddleware = (req, res, next) => {
+export const loginMiddleware = (req, res, next) => {
   const counter = req.session.counter
   const method = req.method.toUpperCase()
   const {path} = req
