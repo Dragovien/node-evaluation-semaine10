@@ -3,13 +3,17 @@ extends ../layout/layout
 block content
     h1#title Register
     div.container-register
-       form(id="registration-form" action="/register" method="POST")
+       form(
+        id="registration-form"
+        action=""
+        method="POST"
+        )
             label#firstname(for="firstname") firstname:
-            input#firstname-input(type="text" name="firstname")
+            input#firstname-input(type="text" name="firstname" required)
             label#lastname(for="lastname") lastname:
-            input#lastname-input(type="text" name="lastname") 
+            input#lastname-input(type="text" name="lastname" required) 
             label#email(for="email") email:
-            input#email-input(type="text" name="email") 
+            input#email-input(type="email" name="email" required) 
             label#password(for="password") password:
-            input#password-input(type="text" name="password")
-            button#btn-post(type="submit" name="sendBtn") Send
+            input#password-input(type="password" name="password" required)
+            button#btn-post(type="submit" ) submit    

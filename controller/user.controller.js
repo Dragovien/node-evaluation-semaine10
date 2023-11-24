@@ -1,13 +1,17 @@
 // import userModel from '../model/users.js'
 
 const onError = (res) => {
-    return (err) => {
-        console.log('Something broke with DB:')
-        console.log(err.message)
-        res.status(501).json({message: err.message})
-    }
-}
+  return (err) => {
+    console.log("Something broke with DB:");
+    console.log(err.message);
+    res.status(501).json({ message: err.message });
+  };
+};
 
+export const home = (req, res) => {
+  res.render("user/register", { title: "Register" });
+  return;
+};
 
 export const home = (req,res) => {
     res.render('user/register', {title: 'Register'})
