@@ -1,16 +1,10 @@
 import mongoose from "./index.js";
 
 const user = new mongoose.Schema({
-    sale: Boolean,
-    price: Number,
-    society: String,
-    qty: Number,
-    size: {
-        h: Number,
-        w: Number,
-        uom: String
-    },
-    year: Number
+    firstName: String,  // type String, obligatoire
+    lastName: String,  // type String, obligatoire
+    email: String,  // type String, obligatoire
+    password: String // type String, obligatoire
 })
 
 export default mongoose.model('users', user);
