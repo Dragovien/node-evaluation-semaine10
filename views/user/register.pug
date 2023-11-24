@@ -2,20 +2,31 @@ extends ../layout/layout
 
 block content
     h1#title Register
-    div.container-register
-       form(
-        id="registration-form"
-        action="/"
-        method="POST"
+    div.container-register.container
+        if emptyField
+            p Please fill all the fields
+        if notConfirmed 
+            p Your password is different from your confirmation
+        if incorrectEmail
+            p Please enter a valid email address
+        if numbersInName
+            p Please do not use numbers in firstname/last name field
+        if existingUser
+            p User already exists, please login instead
+        form(
+            id="registration-form"
+            action="/"
+            method="POST"
         )
-            label#firstname(for="firstname") firstname:
-            input#firstname-input(type="text" name="firstname" required)
-            label#lastname(for="lastname") lastname:
-            input#lastname-input(type="text" name="lastname" required) 
-            label#email(for="email") email:
-            input#email-input(type="email" name="email" required) 
-            label#password(for="password") password:
-            input#password-input(type="password" name="password")
-            label#passwordconfirmation(for="password") password confirmation:
-            input#passwordconfirmation-input(type="password" name="passwordConfirmation")
-            button#btn-post(type="submit" name="sendBtn") Send
+
+            label#firstname(for="firstname") Firstname:
+            input.input#firstname-input(type="text" name="firstname" required)
+            label#lastname(for="lastname") Lastname:
+            input.input#lastname-input(type="text" name="lastname" required) 
+            label#email(for="email") Email:
+            input.input#email-input(type="email" name="email" required) 
+            label#password(for="password") Password:
+            input.input#password-input(type="password" name="password" required)
+            label#passwordconfirmation(for="password") Password confirmation:
+            input.input#passwordconfirmation-input(type="password" name="passwordConfirmation" required)
+            button.btn.btn-secondary#btn-post(type="submit" name="sendBtn") Register
