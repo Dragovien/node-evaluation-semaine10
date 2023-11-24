@@ -5,8 +5,8 @@ block content
     h1#title Login
     div.container-login.container 
         form(id="form-login" action="" method="POST")
-            label#email(for="email") Email: 
-            input#email-input.input(type="email" name="email" required)
-            label#password(for="password")  Password: 
-            input#password-input.input(type="password" name="password" required)
+            label.form-label#email(for="email") Email: 
+            input.form-control#email-input.input(type="email" name="email" required)
+            label.form-label#password(for="password")  Password: 
+            input.form-control#password-input.input(type="password" name="password" required)
             button#btn-connection.btn.btn-secondary(type="submit") Connection
