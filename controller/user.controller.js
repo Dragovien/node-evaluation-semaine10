@@ -9,7 +9,7 @@ const onError = (res) => {
 }
 
 
-export const register = (req,res) => {
+export const home = (req,res) => {
     res.render('user/register', {title: 'Register'})
     return
 }
@@ -22,6 +22,17 @@ export const login = (req,res) => {
 export const dashboard = (req,res) => {
     res.render('user/dashboard', {title: "Dashboard"})
     return
+}
+
+
+export const register = (req,res) => {
+    const {method} = req
+    
+    if(method === 'POST') {
+        const {firstname, lastname, email, password} = req.body
+        console.log(firstname)
+        return
+    }
 }
 
 // export const show = (req,res) => {
