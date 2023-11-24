@@ -13,37 +13,25 @@ export const home = (req, res) => {
   return;
 };
 
-export const home = (req,res) => {
-    res.render('user/register', {title: 'Register'})
-    return
-}
+export const login = (req, res) => {
+  res.render("user/login", { title: "Login" });
+  return;
+};
 
-export const login = (req,res) => {
-    res.render('user/login', {title: "Login"})
-    return
-}
+export const dashboard = (req, res) => {
+  res.render("user/dashboard", { title: "Dashboard" });
+  return;
+};
 
-export const dashboard = (req,res) => {
-    res.render('user/dashboard', {title: "Dashboard"})
-    return
-}
+export const register = (req, res) => {
+  const { method } = req;
 
+  if (method === "POST") {
+    console.log(req.newUser);
 
-export const register = (req,res) => {
-    const {method} = req
-
-    
-    
-    if(method === 'POST') {
-        
-        
-        console.log(req.newUser)
-
-
-
-        return
-    }
-}
+    return;
+  }
+};
 
 // export const show = (req,res) => {
 //     const {name} = req.params
