@@ -14,22 +14,19 @@ export const home = (req,res) => {
     return
 }
 
-// export const all = (req,res) => {
-//     productModel.find({}, {_id: 0, society: 1, qty: 1}).then(products => {
-//         res.render('shop/all', {products, title: "All"})
-//     }).catch(onError(res))
-// }
+export const login = (req,res) => {
+    res.render('user/login', {title: "Login"})
+    return
+}
+
+export const dashboard = (req,res) => {
+    res.render('user/dashboard', {title: "Dashboard"})
+    return
+}
 
 // export const show = (req,res) => {
 //     const {name} = req.params
 //     productModel.findOne({ society : name }).then(prod => {
 //         res.render('shop/show', {prod})
-//     }).catch(onError(res))
-// }
-
-// export const deleteProd = (req,res) => {
-//     const {name} = req.params
-//     productModel.deleteOne({society: name}).then(() => {
-//         res.redirect('/all')
 //     }).catch(onError(res))
 // }
