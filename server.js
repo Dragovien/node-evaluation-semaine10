@@ -23,6 +23,10 @@ app.use(session({
 
 app.use(router)
 
+app.use((req,res) => {
+    res.status(404).send('page not found')
+})
+
 app.listen(8000, () => {
     console.log("Server listening at http://localhost:8000");
 })
