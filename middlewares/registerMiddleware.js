@@ -10,16 +10,15 @@ function escapeOutput(toOutput){
 }
 
 export const registerMiddleware = (req, res, next) => {
+  const { firstname, lastname, email, password, passwordConfirmation } = req.body
 
-  const { firstname, lastname, email, password } = req.body
-
-  if (firstname === '' ||
-    lastname === '' ||
-    email === '' ||
-    password === ''
+  if (firstname.trim() === '' ||
+    lastname.trim() === '' ||
+    email.trim() === '' ||
+    password.trim() === ''||
+    passwordConfirmation.trim() === ''
   ) {
     console.log('empty')
-    // res.redirect('/')
     res.render('user/register', { emptyField: true, title: 'Register' })
     return
   }
@@ -28,12 +27,29 @@ export const registerMiddleware = (req, res, next) => {
   let safeLastName = escapeOutput(lastname)
   let safeEmail = escapeOutput(email)
   let safePassword = escapeOutput(password)
+  let safePasswordConfirm = escapeOutput(passwordConfirmation)
+
+  if(safePassword !== safePasswordConfirm) {
+    console.log('password different from confirmation')
+    res.render('user/register', { notConfirmed: true, title: 'Register' })
+    return
+  }
+
+  let noNumberRegExp = new RegExp(/^[^0-9]*$/)
+
+  if(
+    noNumberRegExp.test(safeFirstName) === false ||
+    noNumberRegExp.test(safeLastName) === false
+  ) {
+    console.log('number in name')
+    res.render('user/register', { numbersInName: true, title: 'Register' })
+    return
+  }
 
   let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
 
   if(emailRegExp.test(safeEmail) === false) {
     console.log('incorrect email format')
-    // res.redirect('/')
     res.render('user/register', {incorrectEmail: true, title: 'Register' })
     return
   }

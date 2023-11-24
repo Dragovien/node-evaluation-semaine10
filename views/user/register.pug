@@ -5,7 +5,7 @@ block content
     div.container-register
        form(
         id="registration-form"
-        action=""
+        action="/"
         method="POST"
         )
             label#firstname(for="firstname") firstname:
@@ -15,7 +15,7 @@ block content
             label#email(for="email") email:
             input#email-input(type="email" name="email" required) 
             label#password(for="password") password:
-            input#password-input(type="text" name="password")
-            label#passwordverification(for="password") password verification:
-            input#passwordverification-input(type="text" name="password")
+            input#password-input(type="password" name="password")
+            label#passwordconfirmation(for="password") password confirmation:
+            input#passwordconfirmation-input(type="password" name="passwordConfirmation")
             button#btn-post(type="submit" name="sendBtn") Send

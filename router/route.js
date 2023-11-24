@@ -5,7 +5,7 @@ import {loginMiddleware} from '../middlewares/loginMiddleware.js'
 const router = express.Router()
 
 router.get('/', home)
-router.post('/register', registerMiddleware, register)
+router.post('/', registerMiddleware, register)
 router.get('/login', login)
 router.get('/dashboard', dashboard)
 
