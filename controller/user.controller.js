@@ -1,21 +1,14 @@
 import userModel from "../model/users.js";
 import CryptoJS from "crypto-js";
-
-const onError = (res) => {
-    return (err) => {
-        console.log("Something broke with DB:");
-        console.log(err.message);
-        res.status(501).json({ message: err.message });
-    };
-};
+import jwt from 'jsonwebtoken';
 
 export const home = (req, res) => {
-    res.render("user/register", { title: "Register" });
+    res.status(200).render("user/register", { title: "Register" });
     return;
 };
 
 export const login = (req, res) => {
-    res.render("user/login", { title: "Login" });
+    res.status(200).render("user/login", { title: "Login" });
     return;
 };
 
@@ -27,11 +20,20 @@ export const userLogin = (req, res) => {
     if (method === "POST") {
         userModel.findOne({ email: email }).then((user) => {
             if (CryptoJS.SHA256(password).toString() === user.password) {
-                res.status(200);
-                res.redirect("/dashboard");
+
+                let token = {
+                    'userId': user.id,
+                    'email': email
+                }
+
+                const accessToken = jwt.sign(token, process.env.JWT_SECRET);
+
+                req.session.token = accessToken
+
+                res.status(200).redirect("/dashboard");
             } else {
-                res.status(301);
-                res.render("user/login", {wrongIdentifiers: true,  title: "Register" });
+                res.status(401).render("user/login", { wrongIdentifiers: true, title: "Login" });
+                return
             }
         });
     }
@@ -39,7 +41,7 @@ export const userLogin = (req, res) => {
 }
 
 export const dashboard = (req, res) => {
-    res.render("user/dashboard", { title: "Dashboard" });
+    res.render("user/dashboard", {user: req.user, title: "Dashboard" });
     return;
 };
 
@@ -51,10 +53,10 @@ export const register = async (req, res) => {
             let user = await userModel.findOne({ email: req.newUser.email });
 
             if (user) {
-                res.render("user/register", { existingUser: true, title: "Register" });
+                res.status(200).render("user/register", { existingUser: true, title: "Register" });
             } else {
                 await userModel.create(req.newUser);
-                res.redirect("./login");
+                res.status(301).redirect("./login");
             }
         } catch (error) {
             console.log(error);

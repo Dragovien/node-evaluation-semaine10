@@ -8,6 +8,6 @@ router.get('/', home)
 router.post('/', registerMiddleware, register)
 router.get('/login', login)
 router.post('/login', userLogin)
-router.get('/dashboard', dashboard)
+router.get('/dashboard', loginMiddleware, dashboard)
 
 export default router;

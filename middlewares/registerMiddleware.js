@@ -31,7 +31,7 @@ export const registerMiddleware = (req, res, next) => {
 
   if(safePassword !== safePasswordConfirm) {
     console.log('password different from confirmation')
-    res.render('user/register', { notConfirmed: true, title: 'Register' })
+    res.status(400).render('user/register', { notConfirmed: true, title: 'Register' })
     return
   }
 
@@ -42,7 +42,7 @@ export const registerMiddleware = (req, res, next) => {
     noNumberRegExp.test(safeLastName) === false
   ) {
     console.log('number in name')
-    res.render('user/register', { numbersInName: true, title: 'Register' })
+    res.status(400).render('user/register', { numbersInName: true, title: 'Register' })
     return
   }
 
@@ -50,7 +50,7 @@ export const registerMiddleware = (req, res, next) => {
 
   if(emailRegExp.test(safeEmail) === false) {
     console.log('incorrect email format')
-    res.render('user/register', {incorrectEmail: true, title: 'Register' })
+    res.status(400).render('user/register', {incorrectEmail: true, title: 'Register' })
     return
   }
 

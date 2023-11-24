@@ -4,9 +4,13 @@ extends ../layout/layout
 block content
     h1#title Login
     div.container-login.container 
-        if wrongIdentifiers 
-            p.error Incorrect password/email
-        form(id="form-login" action="" method="POST")
+        if noSession
+            p.error Please login first
+        if wrongToken
+            p.error Incorrect email or password
+        if wrongIdentifiers
+            p.error Wrong token
+        form(id="form-login" action="/login" method="POST")
             label.form-label#email(for="email") Email: 
             input.form-control#email-input.input(type="email" name="email" required)
             label.form-label#password(for="password")  Password: 
