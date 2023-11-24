@@ -19,7 +19,7 @@ export const registerMiddleware = (req, res, next) => {
     passwordConfirmation.trim() === ''
   ) {
     console.log('empty')
-    res.render('user/register', { emptyField: true, title: 'Register' })
+    res.status(400).render('user/register', { emptyField: true, title: 'Register' })
     return
   }
 
