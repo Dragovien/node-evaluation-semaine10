@@ -3,3 +3,10 @@ extends ../layout/layout
 
 block content
     h1#title login
+    div.container-login 
+        form(id="form-login" action="" method="POST")
+            label#email(for="email") email: 
+            input#email-input(type="email" name="email")
+            label#password(for="password")  password: 
+            input#password-input(type="password" name="password")
+            button#btn-connection(type="submit") connection

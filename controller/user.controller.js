@@ -1,19 +1,21 @@
 // import userModel from '../model/users.js'
 
 const onError = (res) => {
-    return (err) => {
-        console.log('Something broke with DB:')
-        console.log(err.message)
-        res.status(501).json({message: err.message})
-    }
-}
+  return (err) => {
+    console.log("Something broke with DB:");
+    console.log(err.message);
+    res.status(501).json({ message: err.message });
+  };
+};
 
-
-export const home = (req,res) => {
-    res.render('user/home', {title: 'Home'})
-    return
-}
-
+export const register = (req, res) => {
+  res.render("user/register", { title: "Register" });
+  return;
+};
+export const login = (req, res) => {
+  res.render("user/login", { title: "Login" });
+  return;
+};
 // export const all = (req,res) => {
 //     productModel.find({}, {_id: 0, society: 1, qty: 1}).then(products => {
 //         res.render('shop/all', {products, title: "All"})

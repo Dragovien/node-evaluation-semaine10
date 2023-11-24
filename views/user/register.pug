@@ -2,7 +2,7 @@ extends ../layout/layout
 
 block content
     h1#title Register
-    div container-register
+    div.container-register
        form(
         id="registration-form"
         action=""
@@ -13,7 +13,7 @@ block content
             label#lastname(for="lastname") lastname:
             input#lastname-input(type="text" name="lastname") 
             label#email(for="email") email:
-            input#email-input(type="text" name="email") 
+            input#email-input(type="email" name="email") 
             label#password(for="password") password:
             input#password-input(type="text" name="password")
-            input#btn-post(type="submit" value="send")      
+            button#btn-post(type="submit" ) submit    
