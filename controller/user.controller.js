@@ -1,4 +1,5 @@
 import userModel from "../model/users.js";
+import CryptoJS from "crypto-js";
 
 const onError = (res) => {
   return (err) => {
@@ -15,11 +16,18 @@ export const home = (req, res) => {
 
 export const login = (req, res) => {
   res.render("user/login", { title: "Login" });
-  const { method } = req;
   const { email, password } = req.body;
 
-  let user = userModel.findOne({ email: email });
-  console.log(user);
+  userModel.findOne({ email: email }).then((user) => {
+    if (CryptoJS.SHA256(password).toString() === user.password) {
+      res.status(200);
+      res.redirect("/dashboard");
+    } else {
+      res.status(301);
+      res.redirect("/");
+    }
+  });
+
   return;
 };
 
