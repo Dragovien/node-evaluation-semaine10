@@ -6,7 +6,7 @@ block content
     div.container-login 
         form(id="form-login" action="" method="POST")
             label#email(for="email") email: 
-            input#email-input(type="email" name="email")
+            input#email-input(type="email" name="email" required)
             label#password(for="password")  password: 
-            input#password-input(type="password" name="password")
+            input#password-input(type="password" name="password" required)
             button#btn-connection(type="submit") connection

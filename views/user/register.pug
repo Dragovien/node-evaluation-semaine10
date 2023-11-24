@@ -9,11 +9,11 @@ block content
         method="POST"
         )
             label#firstname(for="firstname") firstname:
-            input#firstname-input(type="text" name="firstname")
+            input#firstname-input(type="text" name="firstname" required)
             label#lastname(for="lastname") lastname:
-            input#lastname-input(type="text" name="lastname") 
+            input#lastname-input(type="text" name="lastname" required) 
             label#email(for="email") email:
-            input#email-input(type="email" name="email") 
+            input#email-input(type="email" name="email" required) 
             label#password(for="password") password:
-            input#password-input(type="password" name="password")
+            input#password-input(type="password" name="password" required)
             button#btn-post(type="submit" ) submit    
