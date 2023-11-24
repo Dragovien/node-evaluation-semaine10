@@ -1,4 +1,4 @@
-import userModel from '../model/users.js'
+// import userModel from '../model/users.js'
 
 const onError = (res) => {
     return (err) => {
@@ -9,11 +9,10 @@ const onError = (res) => {
 }
 
 
-// export const home = (req,res) => {
-//     productModel.find().countDocuments().then((stat) => {
-//         res.render('shop/home', {stat, title: 'Home'})
-//     }).catch(onError(res))
-// }
+export const home = (req,res) => {
+    res.render('user/home', {title: 'Home'})
+    return
+}
 
 // export const all = (req,res) => {
 //     productModel.find({}, {_id: 0, society: 1, qty: 1}).then(products => {
