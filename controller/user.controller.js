@@ -33,7 +33,7 @@ export const register = (req,res) => {
     if(method === 'POST') {
         
         
-        console.log('test')
+        console.log(req.newUser)
 
 
 

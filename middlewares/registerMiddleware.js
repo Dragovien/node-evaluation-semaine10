@@ -1,3 +1,14 @@
+import CryptoJS from "crypto-js";
+
+function escapeOutput(toOutput){
+  return toOutput.replace(/\&/g, '&amp;')
+      .replace(/\</g, '&lt;')
+      .replace(/\>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/\'/g, '&#x27;')
+      .replace(/\//g, '&#x2F;');
+}
+
 export const registerMiddleware = (req, res, next) => {
 
   const { firstname, lastname, email, password } = req.body
@@ -7,39 +18,32 @@ export const registerMiddleware = (req, res, next) => {
     email === '' ||
     password === ''
   ) {
-    console.log('empty field')
-    res.redirect('/')
+    console.log('empty')
+    // res.redirect('/')
     res.render('user/register', { emptyField: true, title: 'Register' })
     return
   }
 
-  let NamesRegExp = new RegExp(
-    /^[a-zA-Záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]+([-' ]?[a-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœA-Z]){1,30}$/,
-    "i"
-  );
+  let safeFirstName = escapeOutput(firstname)
+  let safeLastName = escapeOutput(lastname)
+  let safeEmail = escapeOutput(email)
+  let safePassword = escapeOutput(password)
 
-  // escape characters
-  if (
-    NamesRegExp.test(firstname) === false ||
-    NamesRegExp.test(lastname) === false ||
-    NamesRegExp.test(email) === false ||
-    NamesRegExp.test(password) === false
-  ) {
-    console.log('special characters')
-    res.redirect('/')
-    res.render('user/register', { title: 'Register' })
-    return
-  }
   let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
 
-  console.log(emailRegExp.test(email) === false)
-
-  if(emailRegExp.test(email) === false) {
+  if(emailRegExp.test(safeEmail) === false) {
     console.log('incorrect email format')
-    res.redirect('/')
+    // res.redirect('/')
     res.render('user/register', {incorrectEmail: true, title: 'Register' })
     return
   }
 
+  req.newUser = {
+    firstName: safeFirstName,
+    lastName: safeLastName,
+    email: safeEmail,
+    password: CryptoJS.SHA256(safePassword).toString()
+  }
 
+  next()
 }
