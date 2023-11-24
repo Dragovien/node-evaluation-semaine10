@@ -5,7 +5,7 @@ block content
     div container-register
        form(
         id="registration-form"
-        action=""
+        action="/"
         method="POST"
         )
             label#firstname(for="firstname") firstname:
@@ -16,4 +16,4 @@ block content
             input#email-input(type="text" name="email") 
             label#password(for="password") password:
             input#password-input(type="text" name="password")
-            input#btn-post(type="submit" value="send")      
+            button#btn-post(type="submit" name="sendBtn") Send      

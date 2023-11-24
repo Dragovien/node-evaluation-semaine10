@@ -12,6 +12,12 @@ app.set('view engine', 'pug')
 app.use(express.static(staticPath))
 
 app.use(router)
+
+app.post('/', (req, res) => {
+    console.log(req.body)
+    return
+})
+
 app.listen(8000, () => {
     console.log("Server listening at http://localhost:8000");
 })
