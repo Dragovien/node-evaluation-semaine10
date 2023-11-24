@@ -23,6 +23,8 @@ export const dashboard = (req, res) => {
     return
 }
 
+  if (method === "POST") {
+    console.log(req.newUser);
 
 export const register = async (req, res) => {
     const { method } = req
