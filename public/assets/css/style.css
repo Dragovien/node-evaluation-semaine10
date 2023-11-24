@@ -25,6 +25,7 @@ header nav ul {
     height: 50px;
     list-style: none;
     align-items: center;
+    column-gap: 2rem;
 }
 
 .link {
@@ -46,16 +47,12 @@ header nav ul {
 
 .link:hover {
     color: #ff4b2b;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
-    border-top: 1px solid #fff;
+    border: 1px solid #fff;
 }
 
 .link.active  {
     color: #ff4b2b;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
-    border-top: 1px solid #fff;
+    border: 1px solid #fff;
 }
 
 .elemLink {
@@ -87,7 +84,6 @@ header nav ul {
 .input {
     margin-bottom: 2rem;
 }
-
 
 footer {
     display: flex;
